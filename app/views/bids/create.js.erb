@@ -1,0 +1,4 @@
+$("#append-to").html("<%= j(render partial: 'items/high', locals: {item: @item})%>");
+$("#append-to").append("<%= j(render partial: 'items/bid', locals: {bid: @bid})%>");
+
+// $("#new-form").html("");

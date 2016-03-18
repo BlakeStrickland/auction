@@ -8,33 +8,11 @@
   <%= @item.name %>
 </h1>
 <div class="small-4 columns">
-  <%= image_tag @item.image_url, class: "featured" %>
+  <img src="https://s-media-cache-ak0.pinimg.com/236x/b9/9c/52/b99c52548d81a31f66f101ef07cd992d.jpg" />
 </div>
-<div class="small-4 columns">
-  <p>
-    <%= @item.description %>
-  </p>
-
-  <p>
-    Starting price:
-    <%= number_to_currency(@item.starting_price) %>
-  </p>
-
-  <h3>Highest bid</h3>
-  <div class="row collapse">
-    <div class="small-2 columns"><span class="prefix">$</span></div>
-    <div class="small-10 columns"><%= text_field_tag :nothing, @item.highest_bid_amount, disabled: true %></div>
-  </div>
-
-  <%= form_for @bid do |f| %>
-    <h3>Your Bid</h3>
-    <%= f.hidden_field :item_id %>
-    <div class="row collapse">
-      <div class="small-2 columns"><span class="prefix">$</span></div>
-      <div class="small-10 columns"><%= f.text_field :amount %></div>
-    </div>
-    <%= f.submit "Submit Bid!", class: "button success small" %>
-  <% end %>
+<div class="small-4 columns", id="append-to">
+  <%= render partial: 'items/high', locals: {item: @item} %>
+  <%= render partial: 'items/bid', locals: {bid: @bid} %>
 </div>
-<div class="small-4 columns">
+<div id="new-form">
 </div>
